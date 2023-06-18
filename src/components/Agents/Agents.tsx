@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import Agent from "./Agent";
 import { IAgent } from "../../types/Agent";
 import axios from "axios";
-import './Agents.css'
+import "./Agents.css";
+import { Link } from "react-router-dom";
 
 const Agents: FC = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);
@@ -17,11 +18,18 @@ const Agents: FC = () => {
   }, []);
 
   return (
-    <div className="agents">
-      {agents.map((agent) => (
-        <Agent key={agent.id} agent={agent} />
-      ))}
-    </div>
+    <>
+      <Link to="/join">
+        <button type="button" id="join">
+          Join the team
+        </button>
+      </Link>
+      <div className="agents">
+        {agents.map((agent) => (
+          <Agent key={agent.id} agent={agent} />
+        ))}
+      </div>
+    </>
   );
 };
 
