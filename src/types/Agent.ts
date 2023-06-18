@@ -5,6 +5,6 @@ export interface IAgent {
   photoUrl: string;
   agentLicence: string;
   address: string;
-  practiceAreas: string[];
+  practiceAreas: string;
   aboutMe: string;
 }
