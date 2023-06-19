@@ -74,10 +74,55 @@ const CreateAgent: FC = () => {
             value={values.lastName}
           />
           {errors.lastName && touched.lastName && errors.lastName}
+          <input
+            type="text"
+            name="photoUrl"
+            placeholder="Photo URL"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.photoUrl}
+          />
+          <input
+            type="text"
+            name="agentLicence"
+            placeholder="Agent Licence"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.agentLicence}
+          />
+          <input
+            type="text"
+            name="address"
+            placeholder="Address"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.address}
+          />
+          <input
+            type="text"
+            name="practiceAreas"
+            placeholder="Practice Areas"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.practiceAreas}
+          />
+          <input
+            type="text"
+            name="aboutMe"
+            placeholder="About Me"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.aboutMe}
+          />
           {isSubmitting && <div>Is Submitting</div>}
-          <button type="submit" disabled={isSubmitting}>
-            Submit
-          </button>
+          <div id="footer">
+            <button type="button" id="cancel">
+              Cancel
+            </button>
+            <button type="submit" disabled={isSubmitting}>
+              Submit
+            </button>
+          </div>
         </form>
       )}
     </Formik>

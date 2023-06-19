@@ -1,0 +1,19 @@
+button[type="submit"] {
+  background-color: #4caf50;
+}
+
+button#cancel {
+  background-color: #c70000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: auto;
+}
+
+#footer {
+    width: fit-content;
+    margin-left: auto;
+}
