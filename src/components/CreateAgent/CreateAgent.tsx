@@ -23,8 +23,8 @@ const CreateAgent: FC = () => {
     const errors = {} as IAgent;
     if (!values.firstName) errors.firstName = "First Name Required";
     if (!values.lastName) errors.lastName = "Last Name Required";
-    // if (!values.agentLicence) errors.agentLicence = "Agent Licence Required";
-    // if (!values.address) errors.address = "Address Required";
+    if (!values.agentLicence) errors.agentLicence = "Agent Licence Required";
+    if (!values.address) errors.address = "Address Required";
 
     return errors;
   };
@@ -54,6 +54,9 @@ const CreateAgent: FC = () => {
         handleBlur,
         handleSubmit,
         isSubmitting,
+        resetForm,
+        isValid,
+        dirty
       }) => (
         <form onSubmit={handleSubmit}>
           <input
@@ -116,10 +119,10 @@ const CreateAgent: FC = () => {
           />
           {isSubmitting && <div>Is Submitting</div>}
           <div id="footer">
-            <button type="button" id="cancel">
+            <button type="button" id="cancel" onClick={() => resetForm()}>
               Cancel
             </button>
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" disabled={isSubmitting || !isValid || !dirty}>
               Submit
             </button>
           </div>
