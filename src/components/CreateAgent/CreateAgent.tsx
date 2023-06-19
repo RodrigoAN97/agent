@@ -29,15 +29,15 @@ const CreateAgent: FC = () => {
     return errors;
   };
 
-  const onSubmit = (
+  const onSubmit = async (
     values: Partial<IAgent>,
     actions: FormikHelpers<Partial<IAgent>>
   ) => {
     actions.setSubmitting(true);
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      actions.setSubmitting(false);
-    }, 1000);
+    console.log(values);
+    const response = await axios.post("/agents", { agent: values });
+    alert(response);
+    actions.setSubmitting(false);
   };
 
   return (
@@ -56,7 +56,7 @@ const CreateAgent: FC = () => {
         isSubmitting,
         resetForm,
         isValid,
-        dirty
+        dirty,
       }) => (
         <form onSubmit={handleSubmit}>
           <input
