@@ -9,17 +9,18 @@ import debounce from "lodash.debounce";
 
 const Agents: FC = () => {
   const [agents, setAgents] = useState<IAgent[]>([]);
+  const [agentSearch, setAgentSearch] = useState<string>("");
 
   useEffect(() => {
     async function fetchInitialData() {
-      const response = await axios.get("/agents");
+      const response = await axios.post("/agents", { freeText: agentSearch });
       setAgents(response.data);
     }
     fetchInitialData();
-  }, []);
+  }, [agentSearch]);
 
   const handleSearch = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log((event.target as HTMLInputElement).value);
+    setAgentSearch((event.target as HTMLInputElement).value);
   };
 
   const debounceOnChange = debounce(handleSearch, 500);
