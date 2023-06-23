@@ -4,9 +4,11 @@ import { IAgent } from "../../types/Agent";
 import axios from "axios";
 import "./CreateAgent.css";
 import { Formik, FormikHelpers } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const CreateAgent: FC = () => {
   const [agent, setAgent] = useState<IAgent>();
+  const navigate = useNavigate();
   const initialValues: Partial<IAgent> = {
     firstName: "",
     lastName: "",
@@ -35,9 +37,9 @@ const CreateAgent: FC = () => {
   ) => {
     actions.setSubmitting(true);
     console.log(values);
-    const response = await axios.post("/agents", { agent: values });
-    alert(response);
+    const response = await axios.post("/create-agent", { agent: values });
     actions.setSubmitting(false);
+    navigate("/");
   };
 
   return (

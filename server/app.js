@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 const app = express();
 app.use(express.json({ limit: "100mb" }));
 
-app.post("/agents/", async (req, res, next) => {
+app.post("/agents", async (req, res, next) => {
   const search = req.body.freeText;
   const where = {};
   const searchLike = { [Op.like]: `%${search}%` };
@@ -35,7 +35,7 @@ app.post("/agents/", async (req, res, next) => {
   return res.json(agents);
 });
 
-app.post("/agents", async (req, res, next) => {
+app.post("/create-agent", async (req, res, next) => {
   console.log(req.body, "this is agent");
   const agent = await Agent.create(req.body.agent);
   return res.json(agent);
