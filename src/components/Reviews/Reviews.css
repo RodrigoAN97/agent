@@ -1,0 +1,10 @@
+#add-review-bt {
+  background-color: rgb(10, 195, 62);
+  margin-left: 10px;
+}
+
+#add-review {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

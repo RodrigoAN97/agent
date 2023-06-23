@@ -4,12 +4,26 @@ import axios from "axios";
 import "./Reviews.css";
 
 const Reviews: FC = () => {
+  const [reviewText, setReviewText] = useState("");
   useEffect(() => {}, []);
 
+  const onAddReview = () => {
+    console.log(reviewText);
+  };
+
   return (
-    <div>
-      <h2>REVIEWS</h2>
-    </div>
+    <>
+      <h2>Reviews</h2>
+      <div id="add-review">
+        <textarea
+          placeholder="Write your review about this agent"
+          onChange={(e) => setReviewText(e.target.value)}
+        />
+        <button type="button" id="add-review-bt" onClick={onAddReview}>
+          Add review
+        </button>
+      </div>
+    </>
   );
 };
 

@@ -55,8 +55,8 @@ const Agents: FC = () => {
       </div>
       <div className="agents">
         {agents.map((agent) => (
-          <div onClick={() => setAgentModal(agent)}>
-            <Agent fullView={false} key={agent.id} agent={agent} />
+          <div key={agent.id} onClick={() => setAgentModal(agent)}>
+            <Agent fullView={false} agent={agent} />
           </div>
         ))}
       </div>
