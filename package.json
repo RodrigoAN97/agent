@@ -12,6 +12,7 @@
     "lodash.debounce": "^4.0.8",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-modal": "^3.16.1",
     "react-router-dom": "^6.13.0",
     "react-scripts": "^5.0.1",
     "sequelize": "^6.6.5",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.7",
+    "@types/react-modal": "^3.16.0",
     "concurrently": "^6.2.0",
     "nodemon": "^2.0.9"
   },

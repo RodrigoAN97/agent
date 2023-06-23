@@ -1,11 +1,21 @@
 import type { FC } from "react";
 import { IAgent } from "../../types/Agent";
 
-import './Agent.css'
+import "./Agent.css";
+import Reviews from "../Reviews/Reviews";
 
-const Agent: FC<{ agent: IAgent }> = ({ agent }) => {
+const Agent: FC<{ agent: IAgent; fullView: boolean }> = ({
+  agent,
+  fullView,
+}) => {
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{
+        width: fullView ? "fit-content" : "",
+        margin: fullView ? 0 : "",
+      }}
+    >
       <header>
         <div className="avatar-holder">
           <img src={agent.photoUrl} className="avatar" alt={agent.firstName} />
@@ -13,6 +23,7 @@ const Agent: FC<{ agent: IAgent }> = ({ agent }) => {
         <h2 className="agent-name">{agent.firstName + " " + agent.lastName}</h2>
       </header>
       <div className="body">{agent.aboutMe}</div>
+      {fullView && <Reviews></Reviews>}
       <footer>
         <div className="full-width-flex-box">
           <div className="one-third-flex-box">
