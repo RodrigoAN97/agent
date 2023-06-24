@@ -9,14 +9,14 @@ const Reviews: FC<{ agent: IAgent }> = ({ agent }) => {
   const [myAgent, setMyAgent] = useState<IAgent>();
   useEffect(() => {
     setMyAgent(agent);
-  }, []);
+  }, [agent]);
 
   const onAddReview = () => {
     const newAgent: IAgent = {
       ...agent,
       reviews: [...agent.reviews, reviewText],
     };
-    const response = axios
+    axios
       .post("/agent/add-review", {
         agent: newAgent,
       })

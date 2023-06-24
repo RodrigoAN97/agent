@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { IAgent } from "../../types/Agent";
 import axios from "axios";
 import "./CreateAgent.css";
@@ -7,7 +7,6 @@ import { Formik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
 
 const CreateAgent: FC = () => {
-  const [agent, setAgent] = useState<IAgent>();
   const navigate = useNavigate();
   const initialValues: Partial<IAgent> = {
     firstName: "",
@@ -36,8 +35,7 @@ const CreateAgent: FC = () => {
     actions: FormikHelpers<Partial<IAgent>>
   ) => {
     actions.setSubmitting(true);
-    console.log(values);
-    const response = await axios.post("/agent/create", { agent: values });
+    await axios.post("/agent/create", { agent: values });
     actions.setSubmitting(false);
     navigate("/");
   };

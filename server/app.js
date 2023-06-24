@@ -44,7 +44,6 @@ app.post("/agent/add-review", async (req, res, next) => {
   const agent = await Agent.update(req.body.agent, {
     where: { id: req.body.agent.id },
   });
-  console.log("this is agent", agent);
   return res.json(agent);
 });
 
