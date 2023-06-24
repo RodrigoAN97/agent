@@ -62,6 +62,7 @@ const Agents: FC = () => {
       </div>
       {agentModal && (
         <Modal
+          ariaHideApp={false}
           isOpen={!!agentModal}
           onRequestClose={() => setAgentModal(undefined)}
           style={customStyles}
