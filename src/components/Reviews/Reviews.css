@@ -8,3 +8,11 @@
   justify-content: center;
   align-items: center;
 }
+
+ul {
+  width: fit-content;
+}
+
+li {
+  list-style-type: disclosure-closed;
+}
