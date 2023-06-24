@@ -1,6 +1,6 @@
 const express = require("express");
 const { Agent } = require("./model");
-const { Op } = require("sequelize");
+const { Op, where } = require("sequelize");
 
 const app = express();
 app.use(express.json({ limit: "100mb" }));
@@ -35,9 +35,16 @@ app.post("/agents", async (req, res, next) => {
   return res.json(agents);
 });
 
-app.post("/create-agent", async (req, res, next) => {
-  console.log(req.body, "this is agent");
+app.post("/agent/create", async (req, res, next) => {
   const agent = await Agent.create(req.body.agent);
+  return res.json(agent);
+});
+
+app.post("/agent/add-review", async (req, res, next) => {
+  const agent = await Agent.update(req.body.agent, {
+    where: { id: req.body.agent.id },
+  });
+  console.log("this is agent", agent);
   return res.json(agent);
 });
 

@@ -37,7 +37,7 @@ const CreateAgent: FC = () => {
   ) => {
     actions.setSubmitting(true);
     console.log(values);
-    const response = await axios.post("/create-agent", { agent: values });
+    const response = await axios.post("/agent/create", { agent: values });
     actions.setSubmitting(false);
     navigate("/");
   };

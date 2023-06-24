@@ -14,6 +14,7 @@ const Agent: FC<{ agent: IAgent; fullView: boolean }> = ({
       style={{
         width: fullView ? "fit-content" : "",
         margin: fullView ? 0 : "",
+        padding: fullView ? '10px' : "",
       }}
     >
       <header>
@@ -23,7 +24,7 @@ const Agent: FC<{ agent: IAgent; fullView: boolean }> = ({
         <h2 className="agent-name">{agent.firstName + " " + agent.lastName}</h2>
       </header>
       <div className="body">{agent.aboutMe}</div>
-      {fullView && <Reviews></Reviews>}
+      {fullView && <Reviews agent={agent}></Reviews>}
       <footer>
         <div className="full-width-flex-box">
           <div className="one-third-flex-box">

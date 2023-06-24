@@ -2,13 +2,28 @@ import type { FC } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Reviews.css";
+import { IAgent } from "../../types/Agent";
 
-const Reviews: FC = () => {
+const Reviews: FC<{ agent: IAgent }> = ({ agent }) => {
   const [reviewText, setReviewText] = useState("");
-  useEffect(() => {}, []);
+  const [myAgent, setMyAgent] = useState<IAgent>();
+  useEffect(() => {
+    setMyAgent(agent);
+  }, []);
 
   const onAddReview = () => {
-    console.log(reviewText);
+    const newAgent: IAgent = {
+      ...agent,
+      reviews: [...agent.reviews, reviewText],
+    };
+    const response = axios
+      .post("/agent/add-review", {
+        agent: newAgent,
+      })
+      .then(() => {
+        setMyAgent(newAgent);
+        setReviewText("");
+      });
   };
 
   return (
@@ -17,12 +32,14 @@ const Reviews: FC = () => {
       <div id="add-review">
         <textarea
           placeholder="Write your review about this agent"
+          value={reviewText}
           onChange={(e) => setReviewText(e.target.value)}
         />
         <button type="button" id="add-review-bt" onClick={onAddReview}>
           Add review
         </button>
       </div>
+      <ul>{myAgent && myAgent.reviews.map((review) => <li>{review}</li>)}</ul>
     </>
   );
 };
