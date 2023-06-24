@@ -39,7 +39,10 @@ const Reviews: FC<{ agent: IAgent }> = ({ agent }) => {
           Add review
         </button>
       </div>
-      <ul>{myAgent && myAgent.reviews.map((review) => <li>{review}</li>)}</ul>
+      <ul>
+        {myAgent &&
+          myAgent.reviews.map((review, index) => <li key={index}>{review}</li>)}
+      </ul>
     </>
   );
 };
